@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Validating Forms with JS</title>
+</head>
+<body>
+<form action="processData.html" onsubmit="return validateData();">
+	<input type="text" id="userName" placeholder="Your Name" required><span style="color:red">* mandatory  field</span><br>
+	<input type="password" id="userPassword" placeholder="your password" required><span style="color:red">* mandatory field</span><br>
+	<input type="text" id="userAddress" placeholder="Your Address"><br>
+	<input type="text" id="userPhone" placeholder="Your Phone" ><br>
+	<input type="radio" id="userGender" name="gender">Male
+	<input type="radio" id="userGender" name="gender">Female
+	<br>
+	<select id="hobby" multiple="multiple">
+	<option>select your hobby</option>
+	<option>reading</option>
+	<option>music</option>
+	<option>sleeping</option>
+	</select>
+	<br>
+	
+	<input type="submit" value="REGISTER">
+</form>
+
+
+
+
+<script type="text/javascript">
+	function validateData(){
+		var userName = document.getElementById("userName");
+		var userPassword=document.getElementById("userPassword");
+		var userAddress = document.getElementById("userAddress");
+		var userPhone = document.getElementById("userPhone");
+		var userGender=document.getElementById("userGender");
+		var userHobby=document.getElementById("userHobby");
+		
+		if(userName.value == ""){
+			alert("We don't like blank names...");
+			userName.focus();
+			return false;
+		}
+		else if(!isNaN(userName.value)){
+			alert("Names can't include digits");
+			userName.value = "";
+			userName.focus();
+			return false;
+		}
+		else if(!userPassword.value.length)
+		{
+		alert("password is required");
+		userPassword.focus();
+		return false;
+		}
+		else if(!userAddress.value.length){
+			alert("Please Enter the Address");
+			userAddress.focus();
+			return false;
+		}
+
+		else if(!userPhone.value.length){
+	    document.getElementById("userPhone").innerHTML = "Enter the phone number";
+		document.write("enter number");
+			userPhone.focus();
+			return false;
+		}
+		else if(isNaN(userPhone.value)){
+			alert("Please enter the correct phone number");
+			userPhone.value = "";
+			userPhone.focus();
+			return false;
+		}
+		else if(document.getElementById("userGender").checked==false)
+		{
+		alert("select your gender");
+		userGender.focus();
+		return false;
+		}
+		
+		
+		return true;
+
+
+
+
+
+
+
+
+
+
+
+
+
+	}
+</script>
+
+</body>
+</html>
